@@ -9,8 +9,6 @@ import org.springframework.stereotype.Service;
 public class HttpService {
 
     private final OkHttpClient okHttpClient = new OkHttpClient();
-//    private final MediaType mediaType = MediaType.parse("application/json; charset=utf-8");
-    private final MediaType mediaType = MediaType.parse("application/x-www-form-urlencoded; charset=utf-8");
 
     public String requestGet(String url) throws Exception {
         Request request = new Request.Builder()
@@ -21,7 +19,9 @@ public class HttpService {
         Response response = okHttpClient.newCall(request).execute();
         return response.body().string();
     }
-    public String requestPost(String url, String bodyContent) throws Exception {
+
+    public String requestPostByString(String url, String bodyContent) throws Exception {
+        final MediaType mediaType = MediaType.parse("application/x-www-form-urlencoded; charset=utf-8");
         RequestBody body = RequestBody.create(mediaType, bodyContent);
         Request request = new Request.Builder()
                 .url(url)
@@ -31,4 +31,17 @@ public class HttpService {
         Response response = okHttpClient.newCall(request).execute();
         return response.body().string();
     }
+
+    public String requestPostByJson(String url, String bodyContent) throws Exception {
+        final MediaType mediaType = MediaType.parse("application/json; charset=utf-8");
+        RequestBody body = RequestBody.create(mediaType, bodyContent);
+        Request request = new Request.Builder()
+                .url(url)
+                .post(body)
+                .build();
+
+        Response response = okHttpClient.newCall(request).execute();
+        return response.body().string();
+    }
+
 }

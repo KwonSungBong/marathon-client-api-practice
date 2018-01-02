@@ -1,0 +1,4 @@
+rootProject.name = 'marathon-client-api-practice'
+
+include 'marathon-client-service'
+include 'rest-api-service'

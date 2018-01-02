@@ -1,6 +1,5 @@
 package com.example.demo.component;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
@@ -29,14 +28,14 @@ public class MarathonComponentTests {
     private final ObjectMapper mapper = new ObjectMapper();
 
     @Test
-    public void test() {
+    public void test1() {
         log.info("RESULT : {}", marathonComponent.getUrl("test-service").toString());
 
         log.info("TEST");
     }
 
     @Test
-    public void testtest() throws Exception {
+    public void test2() throws Exception {
         String url = "http://localhost:8888";
         String result = httpService.requestGet(url);
 
@@ -44,16 +43,26 @@ public class MarathonComponentTests {
     }
 
     @Test
-    public void testtesttest() throws Exception {
+    public void test3() throws Exception {
         String url = "http://localhost:8888/migration";
 
-//        Map<String, Object> param = Maps.newHashMap();
-//        param.put("serviceName", "test");
-//        param.put("reset", true);
-//        String paramJson = mapper.writeValueAsString(param);
-//        String result = httpService.requestPost(url, paramJson);
+        String paramJson = "serviceName=test&reset=true";
 
-        String result = httpService.requestPost(url, "serviceName=test&reset=true");
+        String result = httpService.requestPostByString(url, paramJson);
+
+        log.info("TEST");
+    }
+
+    @Test
+    public void test4() throws Exception {
+        String url = "http://localhost:8888/migration";
+
+        Map<String, Object> param = Maps.newHashMap();
+        param.put("serviceName", "test");
+        param.put("reset", true);
+        String paramJson = mapper.writeValueAsString(param);
+
+        String result = httpService.requestPostByJson(url, paramJson);
 
         log.info("TEST");
     }
