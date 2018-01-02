@@ -1,0 +1,10 @@
+server:
+  port: 9999
+  contextPath: /
+
+marathon:
+  apps.url:
+  endpoint:
+  password:
+  username:
+
