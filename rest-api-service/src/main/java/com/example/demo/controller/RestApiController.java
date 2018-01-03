@@ -10,8 +10,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class RestApiController {
 
-    @RequestMapping(method = RequestMethod.GET, value="/test")
-    public String test(){
+    @RequestMapping(method = RequestMethod.GET, value="/get")
+    public String get(String param){
+        return "test" + param;
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value="/post")
+    public String post(String param){
+        return "test" + param;
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value="/migration")
+    public String migration(String serviceName, boolean reset){
         return "test";
     }
 
