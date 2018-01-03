@@ -21,7 +21,18 @@ docker image 생성 ./gradlew build buildDocker
 
 docker 실행 docker run -p 8899:8899 -t com.example/rest-api-service:0.0.1-SNAPSHOT
 
+
+######################################################################
+
+marathon 설치
+
+https://github.com/uzyexe/mesos-marathon-demo
+
+marathon 배포
+
+curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" localhost:8080/v2/apps -d @sample/hello-world.json
+
 ######################################################################
 
 
-marathon 설치 및 배포
+
