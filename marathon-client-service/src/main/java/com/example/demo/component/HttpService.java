@@ -4,11 +4,19 @@ import lombok.extern.slf4j.Slf4j;
 import okhttp3.*;
 import org.springframework.stereotype.Service;
 
+import java.util.concurrent.TimeUnit;
+
 @Slf4j
 @Service
 public class HttpService {
 
     private final OkHttpClient okHttpClient = new OkHttpClient();
+//    timeout처리
+//    private final OkHttpClient okHttpClient = new OkHttpClient.Builder()
+//                                                .connectTimeout(30L,TimeUnit.SECONDS)
+//                                                .writeTimeout(30L, TimeUnit.SECONDS)
+//                                                .readTimeout(30L, TimeUnit.SECONDS)
+//                                                .build();
 
     public String requestGet(String url) throws Exception {
         Request request = new Request.Builder()
