@@ -107,4 +107,15 @@ public class MarathonComponentTests {
         return new RestAdapter.Builder().setEndpoint(url).build().create(MediaServiceApi.class);
     }
 
+    @Test
+    public void test6() throws Exception {
+        String url = "http://localhost:8899/migration/multiple";
+
+        String paramString = "multipleServiceName=test1,test2,test3&reset=true";
+
+        String result = httpService.requestPostByString(url, paramString);
+
+        log.info("TEST");
+    }
+
 }

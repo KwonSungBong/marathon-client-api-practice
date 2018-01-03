@@ -22,7 +22,7 @@ import java.util.Map;
 @Component
 public class MarathonComponent {
 
-    @Value("${marathon.apps.url}")
+    @Value("${marathon.endpoint}")
     private String endpoint;
 
     @Value("${marathon.username:test}")

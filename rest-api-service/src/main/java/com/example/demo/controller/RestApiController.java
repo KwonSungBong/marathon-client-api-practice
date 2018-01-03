@@ -25,4 +25,9 @@ public class RestApiController {
         return "test";
     }
 
+    @RequestMapping(method = RequestMethod.POST, value="/migration/multiple")
+    public String migration(String[] multipleServiceName, boolean reset){
+        return "test";
+    }
+
 }
