@@ -1,15 +1,15 @@
 {
   "id": "rest-api-service",
-  "cpus": 0.5,
+  "cpus": 0.1,
   "mem": 256.0,
   "instances": 1,
   "container": {
     "type": "DOCKER",
     "docker": {
       "image": "com.example/rest-api-service:0.0.1-SNAPSHOT",
-      "network": "HOST",
+      "network": "BRIDGE",
       "portMappings": [
-        { "containerPort": 8899, "hostPort": 8899, "protocol": "tcp"}
+        { "containerPort": 8899, "servicePort": 8899, "protocol": "tcp"}
       ]
     }
   }

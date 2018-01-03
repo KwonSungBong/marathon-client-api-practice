@@ -37,12 +37,20 @@ curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" l
 
 rest-api-service 마라톤 배포
 
+로컬에 rest-api-service docker image를 만들어 놔야함
+
 cd /Users/ksb/Documents/git/marathon-client-api-practice/mesos-marathon-demo
 
 curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" localhost:8080/v2/apps -d @spring/rest-api-service.json
 
 
 ######################################################################
+
+curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" localhost:8080/v2/apps -d @nginx/nginx.json
+
+
+######################################################################
+
 
 
 

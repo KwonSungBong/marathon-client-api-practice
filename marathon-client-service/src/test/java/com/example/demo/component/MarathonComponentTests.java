@@ -138,4 +138,11 @@ public class MarathonComponentTests {
         log.info("TEST {}", result);
     }
 
+    @Test
+    public void test9() throws Exception {
+        String restApiServiceUrl = marathonComponent.getUrl("rest-api-service");
+
+        log.info("TEST {}", restApiServiceUrl);
+    }
+
 }
