@@ -118,4 +118,11 @@ public class MarathonComponentTests {
         log.info("TEST");
     }
 
+    @Test
+    public void test7() {
+        final String[] multipleServiceName = {"test1Service", "test2Service", "test3Service", "test4Service"};
+        final String paramString = "multipleServiceName="+String.join(",", multipleServiceName)+"&reset=false";
+        log.info("TEST {}", paramString);
+    }
+
 }
