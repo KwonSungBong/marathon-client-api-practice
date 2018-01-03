@@ -25,10 +25,10 @@ public class MarathonComponent {
     @Value("${marathon.endpoint}")
     private String endpoint;
 
-    @Value("${marathon.username:test}")
+    @Value("${marathon.username}")
     private String marathonUserName;
 
-    @Value("${marathon.password:password}")
+    @Value("${marathon.password}")
     private String marathonPassword;
 
     private Marathon marathon;

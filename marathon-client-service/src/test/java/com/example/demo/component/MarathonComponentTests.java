@@ -35,9 +35,9 @@ public class MarathonComponentTests {
 
     @Test
     public void test1() {
-        log.info("RESULT : {}", marathonComponent.getUrl("test-service").toString());
+        String restApiServiceUrl = marathonComponent.getUrl("rest-api-service");
 
-        log.info("TEST");
+        log.info("RESULT : {}", restApiServiceUrl);
     }
 
     @Test
@@ -123,6 +123,19 @@ public class MarathonComponentTests {
         final String[] multipleServiceName = {"test1Service", "test2Service", "test3Service", "test4Service"};
         final String paramString = "multipleServiceName="+String.join(",", multipleServiceName)+"&reset=false";
         log.info("TEST {}", paramString);
+    }
+
+    @Test
+    public void test8() throws Exception {
+        String restApiServiceUrl = marathonComponent.getUrl("rest-api-service");
+        String api = "/post";
+        String url = restApiServiceUrl + api;
+
+        final String paramString = "param=post";
+
+        String result = httpService.requestPostByString(url, paramString);
+
+        log.info("TEST {}", result);
     }
 
 }

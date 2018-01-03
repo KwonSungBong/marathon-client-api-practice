@@ -3,6 +3,6 @@ server:
   contextPath: /
 
 marathon:
-  endpoint:
+  endpoint: http://localhost:8080
   password:
   username:

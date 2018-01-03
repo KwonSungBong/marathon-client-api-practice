@@ -10,24 +10,29 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class RestApiController {
 
+    @RequestMapping(method = RequestMethod.GET, value="/")
+    public String index() {
+        return "index";
+    }
+
     @RequestMapping(method = RequestMethod.GET, value="/get")
-    public String get(String param){
-        return "test" + param;
+    public String get(String param) {
+        return "get" + param;
     }
 
     @RequestMapping(method = RequestMethod.POST, value="/post")
-    public String post(String param){
-        return "test" + param;
+    public String post(String param) {
+        return "post" + param;
     }
 
     @RequestMapping(method = RequestMethod.POST, value="/migration")
     public String migration(String serviceName, boolean reset){
-        return "test";
+        return "migration" + serviceName;
     }
 
     @RequestMapping(method = RequestMethod.POST, value="/migration/multiple")
-    public String migration(String[] multipleServiceName, boolean reset){
-        return "test";
+    public String migration(String[] multipleServiceName, boolean reset) {
+        return "migration" + String.join(",", multipleServiceName);
     }
 
 }
