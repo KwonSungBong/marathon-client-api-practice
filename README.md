@@ -56,3 +56,5 @@ http://blog.napagoda.com/2017/10/secure-spring-boot-rest-api-using-basic.html
 curl -X GET -u test:secret  http://localhost:8899/get?param=test
 
 http://test:secret@localhost:8899/get?param=test
+
+

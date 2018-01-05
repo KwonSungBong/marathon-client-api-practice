@@ -2,6 +2,8 @@ package com.example.demo.component;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.Maps;
+import com.sun.org.apache.xerces.internal.impl.xpath.regex.Match;
+import jdk.nashorn.internal.runtime.regexp.joni.Regex;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,6 +18,8 @@ import retrofit.http.GET;
 import retrofit.http.POST;
 
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by whilemouse on 18. 1. 2.
@@ -35,7 +39,7 @@ public class MarathonComponentTests {
 
     @Test
     public void test1() {
-        String restApiServiceUrl = marathonComponent.getUrl("rest-api-service");
+        String restApiServiceUrl = marathonComponent.getUrl("media-service");
 
         log.info("RESULT : {}", restApiServiceUrl);
     }
@@ -140,9 +144,47 @@ public class MarathonComponentTests {
 
     @Test
     public void test9() throws Exception {
-        String restApiServiceUrl = marathonComponent.getUrl("rest-api-service");
+        String url = "http://localhost:8899/v2/apps/test-service";
+        String result = WebUtils.fetch(url, "test", "secret");
 
-        log.info("TEST {}", restApiServiceUrl);
+        log.info("TEST {}", result);
+    }
+
+
+    @Test
+    public void test10() throws Exception {
+        String url = "http://test:secret@localhost:8899/v2/apps/media-service";
+        Pattern r = Pattern.compile("^(?<protocol>.+?//)(?<username>.+?):(?<password>.+?)@(?<address>.+)$");
+        Matcher m = r.matcher(url);
+        if (m.find()) {
+            log.info("all value: {}", m.group(0));
+            log.info("protocol value: {}", m.group(1));
+            log.info("username value: {}", m.group(2));
+            log.info("password value: {}", m.group(3));
+            log.info("address value: {}", m.group(4));
+        } else {
+            log.info("NO MATCH");
+        }
+
+        log.info("TEST {}", m);
+    }
+
+    @Test
+    public void test11() throws Exception {
+        String url = "http://localhost:8899/v2/apps/test-service";
+        Pattern r = Pattern.compile("^(?<protocol>.+?//)(?<username>.+?):(?<password>.+?)@(?<address>.+)$");
+        Matcher m = r.matcher(url);
+        if (m.find()) {
+            log.info("all value: {}", m.group(0));
+            log.info("protocol value: {}", m.group(1));
+            log.info("username value: {}", m.group(2));
+            log.info("password value: {}", m.group(3));
+            log.info("address value: {}", m.group(4));
+        } else {
+            log.info("NO MATCH");
+        }
+
+        log.info("TEST {}", m);
     }
 
 }
