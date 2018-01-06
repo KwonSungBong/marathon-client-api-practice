@@ -31,5 +31,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.inMemoryAuthentication().withUser("test").password("secret").roles("USER_ROLE");
     }
 
-
 }

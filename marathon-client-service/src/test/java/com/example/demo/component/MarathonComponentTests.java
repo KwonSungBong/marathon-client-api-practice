@@ -144,34 +144,25 @@ public class MarathonComponentTests {
 
     @Test
     public void test9() throws Exception {
-        String url = "http://localhost:8899/v2/apps/test-service";
+        String url = "http://localhost:8899/get?param=test";
         String result = WebUtils.fetch(url, "test", "secret");
 
         log.info("TEST {}", result);
     }
 
-
     @Test
     public void test10() throws Exception {
-        String url = "http://test:secret@localhost:8899/v2/apps/media-service";
-        Pattern r = Pattern.compile("^(?<protocol>.+?//)(?<username>.+?):(?<password>.+?)@(?<address>.+)$");
-        Matcher m = r.matcher(url);
-        if (m.find()) {
-            log.info("all value: {}", m.group(0));
-            log.info("protocol value: {}", m.group(1));
-            log.info("username value: {}", m.group(2));
-            log.info("password value: {}", m.group(3));
-            log.info("address value: {}", m.group(4));
-        } else {
-            log.info("NO MATCH");
-        }
+        String url = "http://test:secret@test:secret@localhost:8899/post?param=test";
+//        String url = "http://localhost:8899/post";
+//        String result = WebUtils.fetch(url, "test", "secret");
+        String result = WebUtils.post(url);
 
-        log.info("TEST {}", m);
+        log.info("TEST {}", result);
     }
 
     @Test
     public void test11() throws Exception {
-        String url = "http://localhost:8899/v2/apps/test-service";
+        String url = "http://test:secret@localhost:8899/get?param=test";
         Pattern r = Pattern.compile("^(?<protocol>.+?//)(?<username>.+?):(?<password>.+?)@(?<address>.+)$");
         Matcher m = r.matcher(url);
         if (m.find()) {
@@ -180,9 +171,11 @@ public class MarathonComponentTests {
             log.info("username value: {}", m.group(2));
             log.info("password value: {}", m.group(3));
             log.info("address value: {}", m.group(4));
+            log.info("param value: {}", m.group(4).split("\\?")[1]);
         } else {
             log.info("NO MATCH");
         }
+
 
         log.info("TEST {}", m);
     }
